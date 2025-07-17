@@ -5,7 +5,3 @@
 **/dist
 **/node_modules
 **/public
-
-./tsconfig.json
-test.ts,
-testJS.js
