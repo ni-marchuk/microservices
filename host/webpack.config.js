@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {ModuleFederationPlugin} = require("webpack").container;
 const deps = require("./package.json").dependencies;
+// const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 require('dotenv').config();
 
 const mode = process.env.NODE_ENV === "production" ? "production" : "development";
@@ -48,7 +49,7 @@ module.exports = {
         }),
         new ModuleFederationPlugin({
             name: 'host',
-            runtime: 'runtime',
+            // runtime: 'runtime',
             shared: {
                 'react': {
                     singleton: true,
@@ -88,7 +89,7 @@ function getPublicPath() {
 }
 
 function getChunkFileName() {
-    return mode=== "production"
+    return mode === "production"
         ? "[name].[contenthash].js"
         : "[name].js"
 }

@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {ModuleFederationPlugin} = require("webpack").container;
-const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 const deps = require("./package.json").dependencies;
 
 require('dotenv').config();
@@ -50,7 +49,7 @@ module.exports = {
         new ModuleFederationPlugin({
             name: 'products',
             filename: 'remoteEntry.js', // build file defaultName
-            runtime: 'runtime',
+            // runtime: 'runtime',
             exposes: {
                 './ProductsApp': './src/App.tsx', // root
             },
@@ -66,7 +65,6 @@ module.exports = {
                 },
             },
         }),
-        new ExternalTemplateRemotesPlugin()
     ],
 };
 
